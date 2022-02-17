@@ -1,0 +1,73 @@
+@model Day_7.Models.PersonModel;
+
+@{
+    ViewData["title"] = "Add new people";
+}
+
+<h1>Introduce your self</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id">
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control">
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control">
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <div class="form-check">
+                    <input type="radio" asp-for="Gender" id="Male" value="1" class="form-check-input" checked>
+                    <label for="Male" class="form-check-label">Male</label>
+                </div>
+                <div class="form-check">
+                    <input type="radio" asp-for="Gender" id="Female" value="0" class="form-check-input">
+                    <label for="Female" class="form-check-label">Female</label>
+                </div>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control">
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control">
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BirthPlace" class="control-label"></label>
+                <input asp-for="BirthPlace" class="form-control">
+                <span asp-validation-for="BirthPlace" class="text-danger"></span>
+            </div>
+
+            <div class="form-check">
+                <label asp-for="IsGraduate" class="form-check-label"></label>
+                @Html.CheckBox("IsGraduate", new { @class = "form-check-input" })
+                <span asp-validation-for="IsGraduate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mt-2">
+                <input type="submit" value="Edit" class="btn btn-primary">
+            </div>
+        </form>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

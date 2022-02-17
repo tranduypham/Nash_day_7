@@ -1,0 +1,74 @@
+@model IEnumerable<Day_7.Models.PersonModel>;
+
+@{
+    ViewData["title"] = "People Page";
+}
+
+<h1>Welcom to people</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <a asp-action="Add" class="btn btn-primary">Add new person</a>
+        </div>
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                        <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                        <th>@Html.DisplayNameFor(model => model.DateOfBirth)</th>
+                        <th>@Html.DisplayNameFor(model => model.BirthPlace)</th>
+                        <th>@Html.DisplayNameFor(model => model.IsGraduate)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var person in ViewBag.peopleList)
+                    {
+                        <tr>
+                            <td>
+                                <a asp-action="Detail" asp-route-id="@person.Id" class="text-dark text-decoration-none">@person.FirstName</a>
+                                
+                            </td>
+                            <td>
+                                <a asp-action="Detail" asp-route-id="@person.Id" class="text-dark text-decoration-none">@person.LastName</a>
+                            </td>
+                            <td>@person.DateOfBirth</td>
+                            <td>@person.BirthPlace</td>
+                            <td>@person.IsGraduate</td>
+                            <td>
+                                <a asp-action="Delete" asp-route-id="@person.Id" class="btn btn-danger btn-del">Del</a>
+                                <a asp-action="Edit" asp-route-id="@person.Id" class="btn btn-warning">Edit</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @if (ViewBag.isConfirm == true)
+    {
+        <script>
+            confirm("Person " + "@ViewBag.nameConfirm" + " has been deleted");
+        </script>
+    }
+    <script>
+        var delBtn = $(".btn-del");
+        delBtn.on('click',function(event){
+            event.preventDefault();
+            opt = confirm("Are you sure delete this item ?");
+            if(opt==true){
+                console.log($(this).attr("href"));
+                $.ajax({
+                    url: $(this).attr("href"),
+                    type: "POST"
+                }).done(function(){
+                    window.location.reload();
+                });
+            }
+        });
+    </script>
+}

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ip3Uc7Tqjswp3O1SZ3YWYIK0C8s1/IFeC/DByKQTcDcazzWQH3En39BUl3jK3SobFBhffvKGjAnf+p2VFaU5RQ==",
+  "success": true,
+  "projectFilePath": "E:\\NasTech\\Day_7\\Day_7.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\DELL\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

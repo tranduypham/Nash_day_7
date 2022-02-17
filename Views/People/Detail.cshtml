@@ -1,0 +1,42 @@
+@model Day_7.Models.PersonModel;
+
+@{
+    ViewData["title"] = "Info";
+}
+
+<h1>@Model.FirstName @Model.LastName detail information</h1>
+<div class="row">
+    <div class="col-md-8">
+        <table class="table">
+            <tr>
+                <td class="font-weight-bold">@Html.DisplayNameFor(model=>model.FirstName)</td>
+                <td>@Html.DisplayFor(model=>model.FirstName)</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">@Html.DisplayNameFor(model=>model.LastName)</td>
+                <td>@Html.DisplayFor(model=>model.LastName)</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">@Html.DisplayNameFor(model=>model.Gender)</td>
+                <td>@Html.DisplayFor(model=>model.Gender)</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">@Html.DisplayNameFor(model=>model.DateOfBirth)</td>
+                <td>@Html.DisplayFor(model=>model.DateOfBirth)</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">@Html.DisplayNameFor(model=>model.BirthPlace)</td>
+                <td>@Html.DisplayFor(model=>model.BirthPlace)</td>
+            </tr>
+            <tr>
+                <td class="font-weight-bold">@Html.DisplayNameFor(model=>model.IsGraduate)</td>
+                <td>@Model.IsGraduate</td>
+            </tr>
+        </table>
+        <form asp-action="Delete" asp-route-id="@Model.Id">
+            <input type="hidden" name="Redirect" value="true">
+            <input type="submit" value="Delete" class="btn btn-danger btn-del">
+        </form>
+        @Html.ActionLink("Back to Home","Index")
+    </div>
+</div>
